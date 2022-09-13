@@ -1,0 +1,19 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/components/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "MohamadHosseinMoghaddamfar mhmoghaddamfar@gmail.com",
+  "license": "ISC",
+  "repository": "github:https://github.com/PVZMF/Todo_List.git",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8"
+  }
+}
