@@ -142,7 +142,7 @@ function render(dbTodos){
         let newtodo = document.createElement('div');
         newtodo.classList.add('flex','mb-4','items-center');
         let p = document.createElement('p');
-        p.classList.add('w-full','text-grey-darkest');
+        p.classList.add('w-full','text-grey-darkest', 'lg:text-2xl',"text-center","underline-offset-1");
         let btnDone = document.createElement('button');
         btnDone.classList.add('hidden','flex-no-shrink','p-2','ml-4','mr-2','border-2','rounded','hover:text-white','text-green','border-green','hover:bg-green');
         btnDone.innerHTML = "Done";
@@ -155,9 +155,12 @@ function render(dbTodos){
         if(element.status){
              btnNotDone.classList.add("hidden");
              btnDone.classList.remove("hidden");
+             p.classList.add("text-green-500");
         }else{
             btnNotDone.classList.remove("hidden");
             btnDone.classList.add("hidden");
+            p.classList.add("text-slate-800");
+            
         }
         p.innerHTML = element.data;
         btnDone.addEventListener('click',() => NotDone(i));
