@@ -8,6 +8,7 @@ function Add(){
         "date":date.value,
         }];
     render(dbTodos);
+    updateTable(0);
 }
 
 function updateTable(num){
@@ -63,7 +64,7 @@ function updateTable(num){
         tdNotDone.classList.add("text-sm","text-gray-900","font-medium","px-6","py-4","whitespace-nowrap");
         tdNotDone.innerHTML = NotDonetask;
         let button = document.createElement("td");
-        button.classList.add("inline-block","px-6","py-2.5","bg-green-600","text-white","font-medium","text-xs","leading-tight","uppercase","rounded","shadow-md","hover:bg-blue-700","hover:shadow-lg","focus:bg-blue-700","focus:shadow-lg","focus:outline-none","focus:ring-0","active:bg-blue-800","active:shadow-lg","transition","duration-150","ease-in-out");
+        button.classList.add("mt-3","inline-block","px-6","py-2","bg-green-600","text-white","font-medium","text-xs","leading-tight","uppercase","rounded","shadow-md","hover:bg-blue-700","hover:shadow-lg","focus:bg-blue-700","focus:shadow-lg","focus:outline-none","focus:ring-0","active:bg-blue-800","active:shadow-lg","transition","duration-150","ease-in-out");
         button.innerHTML = "Update";
         button.addEventListener("click",()=>updateTable(i+1));
         tr.append(tdtime,tdAll,tdDone,tdNotDone,button);
@@ -74,20 +75,27 @@ function updateTable(num){
 }
 
 function Done(num){
-    let listtodos = document.querySelector("#listTodos");
-    let todo = listtodos.children[num];
-    todo.children[1].classList.toggle("hidden");
-    todo.children[2].classList.toggle("hidden");
     dbTodos[num].status = true;
+    if(document.querySelector("#flexSwitchCheckChecked1").checked){
+        AllTasks();
+    }
+    else if(document.querySelector("#flexSwitchCheckChecked2").checked){
+        DoneTasks();
+    }else{
+        NotDoneTasks();
+    }
 }
 
 function NotDone(num){
-    let listtodos = document.querySelector("#listTodos");
-    let todo = listtodos.children[num];
-    todo.children[1].classList.toggle("hidden");
-    todo.children[2].classList.toggle("hidden");
     dbTodos[num].status = false;
-    console.log(dbTodos);
+    if(document.querySelector("#flexSwitchCheckChecked1").checked){
+        AllTasks();
+    }
+    else if(document.querySelector("#flexSwitchCheckChecked2").checked){
+        DoneTasks();
+    }else{
+        NotDoneTasks();
+    }
 }
 
 function Remove(num){
@@ -110,8 +118,8 @@ function AllTasks(){
 }
 
 function NotDoneTasks(){
-    let dbDone = dbTodos.filter(elem => !elem.status);
-    render(dbDone);
+    let dbNotDone = dbTodos.filter(elem => !elem.status);
+    render(dbNotDone);
 }
 let keyup = "";
 function Search(e){
@@ -153,9 +161,7 @@ function render(dbTodos){
         }
         p.innerHTML = element.data;
         btnDone.addEventListener('click',() => NotDone(i));
-        btnDone.addEventListener('click',() => DoneTasks());
         btnNotDone.addEventListener('click',() => Done(i));
-        btnNotDone.addEventListener('click',() => NotDoneTasks());
         btnRemove.addEventListener('click',() => Remove(i));
         listtodos.append(newtodo);
         newtodo.append(p,btnDone,btnNotDone,btnRemove)
