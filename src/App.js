@@ -168,3 +168,9 @@ function render(dbTodos){
     });
     
 }
+
+function DeletTable(){
+    dbTodos = [];
+    AllTasks();
+    updateTable(0);
+}
