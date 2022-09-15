@@ -2,4 +2,4 @@
 
 This is a sample of Todo list site (Front-End)
 
-![Screenshot_20220915_062100](https://user-images.githubusercontent.com/66774651/190294553-5d1425be-ba62-4825-bbc2-a0c77d3ab69e.png)
+![Screenshot_20220915_064336](https://user-images.githubusercontent.com/66774651/190297861-36ecc54a-0f97-4f83-9c0d-8e83e1cbfa58.png)
